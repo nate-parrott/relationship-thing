@@ -1,0 +1,16 @@
+s2	"yes, i have a sexual partner (boyfriend or girlfriend)"
+partner_deceased	"not deceased"
+q23	"i earned more"	"we earned about the same amount"	"partner earned more"	refused
+same_sex_couple	"different sex couple"	"same-sex couple"
+s1a	yes
+respondent_race	"NH white"	"NH black"	"NH Amer Indian"	"NH Asian Pac Islander"	"NH Other"	Hispanic
+partner_race	"NH white"	"NH black"	"NH Amer Indian"	"NH Asian Pac Islander"	"NH Other"	Hispanic
+q30	"approve"	"neither approve nor disapprove"	"disapprove"	"do not know"	"refused"
+w3_q5	yes	no
+w3_q1	yes	no
+relationship_quality	"very poor"	poor	fair	good	excellent
+w2w3_combo_breakup	"still together, or lost to follow-up, or partner deceased"	"broke up"
+w3_broke_up	"still together"	"broke up"	"partner deceased"
+w3_q10	"I wanted to break up more"	"[xNameP] wanted to break up more"	"We both equally wanted to break up"
+pppartyid3	republican	democrat	other
+q12	republican	democrat	independent	"another party, please specify"	"no preference"	refused

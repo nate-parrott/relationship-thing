@@ -2,10 +2,10 @@ s2	"yes, i have a sexual partner (boyfriend or girlfriend)"
 partner_deceased	"not deceased"
 q23	"i earned more"	"we earned about the same amount"	"partner earned more"	refused
 same_sex_couple	"different sex couple"	"same-sex couple"
+parental_approval	"don't approve or don't know"	approve
 s1a	yes
 respondent_race	"NH white"	"NH black"	"NH Amer Indian"	"NH Asian Pac Islander"	"NH Other"	Hispanic
 partner_race	"NH white"	"NH black"	"NH Amer Indian"	"NH Asian Pac Islander"	"NH Other"	Hispanic
-q30	"approve"	"neither approve nor disapprove"	"disapprove"	"do not know"	"refused"
 w3_q5	yes	no
 w3_q1	yes	no
 relationship_quality	"very poor"	poor	fair	good	excellent
@@ -14,3 +14,8 @@ w3_broke_up	"still together"	"broke up"	"partner deceased"
 w3_q10	"I wanted to break up more"	"[xNameP] wanted to break up more"	"We both equally wanted to break up"
 pppartyid3	republican	democrat	other
 q12	republican	democrat	independent	"another party, please specify"	"no preference"	refused
+papreligion	"baptist-any denomination"	"protestant (e.g., methodist, lutheran, presbyterian, episcopal)"	catholic	mormon	jewish	muslim	hindu	buddhist	pentecostal	"eastern orthodox"	"other christian"	"other non-christian, please specify:"	none	refused
+q7b	"baptist - any denomination"	"protestant (e.g. methodist, lutheran, presbyterian, episcopal)"	catholic	mormon	jewish	muslim	hindu	buddhist	pentecostal	"eastern orthodox"	"other christian"	"other non-christian, please specify"	none	refused
+ppmarit	married	widowed	divorced	separated	"never married"	"living with partner"
+w4_attractive	"very attractive"	"moderately attractive"	"slightly attractive"	"not at all attractive"	Refused
+w4_attractive_partner	"very attractive"	"moderately attractive"	"slightly attractive"	"not at all attractive"	Refused

@@ -37,7 +37,7 @@ def extract_features(filenames, id_field, other_fields):
     return observations  
 
 def generate_enum_map(enum_file):
-	enums = {}
+    enums = {}
     f = open(enum_file)
     reader = csv.reader(f, delimiter='\t')
     for line in reader:
@@ -104,7 +104,7 @@ def filter_data(observations, necessary_fields):
 """
 
 def export_features(observations, fields):
-    f = open("out.txt", 'w')
+    f = open("out.csv", 'w')
     writer = csv.DictWriter(f, fieldnames=fields)
     writer.writeheader()
     for obs_id in observations.keys():
@@ -135,7 +135,7 @@ def binarize_data(observations, functions):
     returns - a dictionary from key to label
 """
 
-def label_data(observations, label_fun)
+def label_data(observations, label_fun):
 	labels = {}
 	for obs_key in observations.keys():
 		obs = observations[obs_key]

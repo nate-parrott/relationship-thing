@@ -4,6 +4,9 @@ from collections import defaultdict
 
 ID_FIELD = 'caseid_new'
 NECESSARY_FIELDS = {'s2':True, 'partner_deceased':False}
+# a list of the fields in the primary document that are to be extracted
+# if you want to add more, just add it to the list
+# if the field values need to be converted to integers, add it to the 'enum_mapper.tsv' file
 INFO_FIELDS = ['caseid_new',  's2', 'partner_deceased', 'respondent_yrsed', 'partner_yrsed', 'q23', 'hhinc', 'same_sex_couple', 's1a', 'respondent_race', 'partner_race', 'age_difference', 'q21b', 'ppage', 'q9', 'parental_approval', 'w3_q5', 'w3_q1', 'relationship_quality', 'w2w3_combo_breakup', 'w3_broke_up', 'w3_days_elapsed', 'w3_q10', 'q32_internet', 'pppartyid3', 'q12', 'papreligion', 'q7b', 'ppmarit']
 SUPP_FIELDS = ['w4_attractive', 'w4_attractive_partner']
 INFO_FILE = 'data/projectdata.csv'
@@ -33,6 +36,16 @@ def extract_features(filenames, id_field, other_fields):
                 observations[key][field] = row[field] 
     return observations  
 
+def generate_enum_map(enum_file):
+	enums = {}
+    f = open(enum_file)
+    reader = csv.reader(f, delimiter='\t')
+    for line in reader:
+        field = line[0]
+        enums[field] = line[1:]
+    return enums
+
+
 """ cleans data by filtering it into enums
      observations - a dictionary (string id -> dictionary) that stores for each 
                     unique id the values for each field
@@ -44,17 +57,11 @@ def extract_features(filenames, id_field, other_fields):
                in the row the field name is associated to. Any unspecified values will
                be assigned OTHER and any empty string values will be assigned MISSING
     """
-def clean(observations, enum_file):
-    enums = {}
-    f = open(enum_file)
-    reader = csv.reader(f, delimiter='\t')
-    for line in reader:
-        field = line[0]
-        enums[field] = line[1:]
+def clean(observations, enum_map):
     for obs_key in observations.keys():
         obs = observations[obs_key]
-        for field in enums.keys():
-            vals = enums[field]
+        for field in enum_map.keys():
+            vals = enum_map[field]
             converted = False
             if not field in obs.keys():
             	continue
@@ -156,9 +163,14 @@ def check_freqs(observations, field):
         
 
 def main():
+    #extract row data from the different input files
     obs = extract_features([INFO_FILE, SUPP_FILE], ID_FIELD, [INFO_FIELDS, SUPP_FIELDS])
-    obs = clean(obs, 'enum_mapper.tsv')
-    #obs = filter_data(obs, ['s2', 'partner_deceased'])
+    #for multiple choice questions, create a map to number values for acceptable answers
+    enum_map = generate_enum_map('enum_mapper.tsv')
+    #converts answers to number values
+    obs = clean(obs, enum_map)
+    #remove any rows with MISSING or OTHER values for "are you in a relationship" and partner_deceased
+    obs = filter_data(obs, ['s2', 'partner_deceased'])
     binarize_lam = {
                      'same_sex' : lambda x: x['same_sex_couple'],
                      'same_race' : lambda x: 1 if x['respondent_race'] == x['partner_race'] else 0 ,
@@ -168,10 +180,12 @@ def main():
                      'same_religion' : lambda x: 1 if x['papreligion'] == x['q7b'] else 0,
                      'age_gap' : lambda x: 1 if x['age_difference'] > 5 else 0
                      }
-    #bin_obs = binarize_data(obs, binarize_lam)
+    #converts the data to the binarized form
+    bin_obs = binarize_data(obs, binarize_lam)
     #print bin_obs
     all_fields = list(INFO_FIELDS)
     all_fields.extend(SUPP_FIELDS)
+    #print all the fields 
     export_features(obs, all_fields)
     
 

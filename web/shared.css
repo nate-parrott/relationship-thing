@@ -103,3 +103,22 @@ line.axis {
 .scale-label.y {
 	dominant-baseline: text-after-edge;
 }
+
+/* stats tables */
+
+.stats {
+	margin: 1em auto;
+	text-align: center;
+	table-layout: fixed;
+	font-weight: bold;
+	font-size: small;
+}
+
+.stats td {
+	max-width: 200px;
+}
+
+.stats thead {
+	color: #FE4365;
+	text-transform: uppercase;
+}

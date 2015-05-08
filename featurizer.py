@@ -7,7 +7,7 @@ NECESSARY_FIELDS = {'s2':True, 'partner_deceased':False}
 # a list of the fields in the primary document that are to be extracted
 # if you want to add more, just add it to the list
 # if the field values need to be converted to integers, add it to the 'enum_mapper.tsv' file
-INFO_FIELDS = ['caseid_new',  's2', 'partner_deceased', 'respondent_yrsed', 'partner_yrsed', 'q23', 'hhinc', 'same_sex_couple', 's1a', 'respondent_race', 'partner_race', 'age_difference', 'q21b', 'ppage', 'q9', 'parental_approval', 'w3_q5', 'w3_q1', 'relationship_quality', 'w2w3_combo_breakup', 'w3_broke_up', 'w3_days_elapsed', 'w3_q10', 'q32_internet', 'pppartyid3', 'q12', 'papreligion', 'q7b', 'ppmarit']
+INFO_FIELDS = ['caseid_new',  's2', 'partner_deceased', 'respondent_yrsed', 'partner_yrsed', 'q23', 'hhinc', 'same_sex_couple', 's1a', 'respondent_race', 'partner_race', 'age_difference', 'q21b', 'ppage', 'q9', 'parental_approval', 'w3_q5', 'w3_q1', 'relationship_quality', 'w2w3_combo_breakup', 'w3_broke_up', 'w3_days_elapsed', 'w3_q10', 'q32_internet', 'pppartyid3', 'q12', 'papreligion', 'q7b', 'ppmarit', 'how_long_ago_first_romantic']
 SUPP_FIELDS = ['w4_attractive', 'w4_attractive_partner']
 BINARY_FIELDS = ['caseid_new', 'same_sex', 'same_race', 'parental_approval', 'same_pol', 'internet', 'same_religion', 'age_gap', 'broken_up']
 INFO_FILE = 'data/projectdata.csv'

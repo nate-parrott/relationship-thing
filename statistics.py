@@ -19,6 +19,10 @@ def main():
 	resp_edu, partner_edu = arrays_for_comparison(couples, 'respondent_yrsed', 'partner_yrsed')
 	edu_correlation, edu_p_val = pearsonr(map(float, resp_edu), map(float, partner_edu))
 	print "One partner's years of education is correlated with the other partner's pearson coefficient {0} and p-value {1}".format(edu_correlation, edu_p_val)
+	
+	years, relationship_qualities = arrays_for_comparison(couples, 'how_long_ago_first_romantic', 'relationship_quality')
+	correlation, p_val = pearsonr(map(float, years), map(float, relationship_qualities))
+	print "Duration of relationship is correlated with self-assessed relationship quality with pearson coefficient {0} and p-value {1}".format(correlation, p_val)
 
 if __name__ == '__main__':
 	main()

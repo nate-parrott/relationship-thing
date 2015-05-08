@@ -119,11 +119,12 @@ def export_features(observations, fields, filename):
     returns - observations, but with the value as a dictionary from field to
     		  0/1 value that was determined by the function it was given
 """
-def binarize_data(observations, functions):
+def binarize_data(observations, functions, id_field):
     new_obs = {}
     for obs_key in observations.keys():
         new_obs[obs_key] = {}
         obs = observations[obs_key]
+        new_obs[obs_key][id_field] = obs_key
         for field in functions.keys():
             new_obs[obs_key][field] = functions[field](obs)
     return new_obs
@@ -182,9 +183,9 @@ def main():
                      'age_gap' : lambda x: 1 if x['age_difference'] > 5 else 0
                      }
     #converts the data to the binarized form
-    bin_obs = binarize_data(obs, binarize_lam, 'binary_data.csv')
+    bin_obs = binarize_data(obs, binarize_lam, 'caseid_new')
     #export the binary features
-    export_features(bin_obs, BINARY_FIELDS)
+    export_features(bin_obs, BINARY_FIELDS, 'binary_data.csv')
     all_fields = list(INFO_FIELDS)
     all_fields.extend(SUPP_FIELDS)
     #print all the fields 

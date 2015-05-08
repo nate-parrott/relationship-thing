@@ -9,7 +9,7 @@ NECESSARY_FIELDS = {'s2':True, 'partner_deceased':False}
 # if the field values need to be converted to integers, add it to the 'enum_mapper.tsv' file
 INFO_FIELDS = ['caseid_new',  's2', 'partner_deceased', 'respondent_yrsed', 'partner_yrsed', 'q23', 'hhinc', 'same_sex_couple', 's1a', 'respondent_race', 'partner_race', 'age_difference', 'q21b', 'ppage', 'q9', 'parental_approval', 'w3_q5', 'w3_q1', 'relationship_quality', 'w2w3_combo_breakup', 'w3_broke_up', 'w3_days_elapsed', 'w3_q10', 'q32_internet', 'pppartyid3', 'q12', 'papreligion', 'q7b', 'ppmarit']
 SUPP_FIELDS = ['w4_attractive', 'w4_attractive_partner']
-BINARY_FIELDS = ['caseid_new', 'same_sex', 'same_race', 'parental_approval', 'same_pol', 'internet', 'same_religion', 'age_gap']
+BINARY_FIELDS = ['caseid_new', 'same_sex', 'same_race', 'parental_approval', 'same_pol', 'internet', 'same_religion', 'age_gap', 'broken_up']
 INFO_FILE = 'data/projectdata.csv'
 SUPP_FILE = 'data/supplement.csv'
 MISSING = 'MISSING'
@@ -180,7 +180,8 @@ def main():
                      'same_pol' : lambda x: 1 if x['pppartyid3'] == x['q12'] else 0,
                      'internet' : lambda x: x['q32_internet'],
                      'same_religion' : lambda x: 1 if x['papreligion'] == x['q7b'] else 0,
-                     'age_gap' : lambda x: 1 if x['age_difference'] > 5 else 0
+                     'age_gap' : lambda x: 1 if x['age_difference'] > 5 else 0,
+                     'broken_up' : lambda x: x['w3_broke_up']
                      }
     #converts the data to the binarized form
     bin_obs = binarize_data(obs, binarize_lam, 'caseid_new')

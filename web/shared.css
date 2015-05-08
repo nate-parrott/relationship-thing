@@ -116,6 +116,7 @@ line.axis {
 
 .stats td {
 	max-width: 200px;
+	vertical-align: middle;
 }
 
 .stats thead {

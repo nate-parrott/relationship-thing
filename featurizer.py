@@ -9,6 +9,7 @@ NECESSARY_FIELDS = {'s2':True, 'partner_deceased':False}
 # if the field values need to be converted to integers, add it to the 'enum_mapper.tsv' file
 INFO_FIELDS = ['caseid_new',	's2', 'partner_deceased', 'respondent_yrsed', 'partner_yrsed', 'q23', 'hhinc', 'same_sex_couple', 's1a', 'respondent_race', 'partner_race', 'age_difference', 'q21b', 'ppage', 'q9', 'parental_approval', 'w3_q5', 'w3_q1', 'relationship_quality', 'w2w3_combo_breakup', 'w3_broke_up', 'w3_days_elapsed', 'w3_q10', 'q32_internet', 'pppartyid3', 'q12', 'papreligion', 'q7b', 'ppmarit']
 SUPP_FIELDS = ['w4_attractive', 'w4_attractive_partner']
+BINARY_FIELDS = ['caseid_new', 'same_sex', 'same_race', 'parental_approval', 'same_pol', 'internet', 'same_religion', 'age_gap']
 INFO_FILE = 'data/projectdata.csv'
 SUPP_FILE = 'data/supplement.csv'
 MISSING = 'MISSING'
@@ -103,12 +104,21 @@ def filter_data(observations, necessary_fields):
 
 """
 
+<<<<<<< HEAD
 def export_features(observations, fields):
 		f = open("out.csv", 'w')
 		writer = csv.DictWriter(f, fieldnames=fields)
 		writer.writeheader()
 		for obs_id in observations.keys():
 				writer.writerow(observations[obs_id])
+=======
+def export_features(observations, fields, filename):
+    f = open(filename, 'w')
+    writer = csv.DictWriter(f, fieldnames=fields)
+    writer.writeheader()
+    for obs_id in observations.keys():
+        writer.writerow(observations[obs_id])
+>>>>>>> 70423d07c2a48a5876c4e0105e04a263af4af085
 """ binarizes data by using a dictionary of functions that will binarize fields
 		observations - a dictionary (string id -> dictionary) that stores for each 
 										unique id the values for each field
@@ -191,7 +201,6 @@ def main():
 		all_fields = INFO_FIELDS + SUPP_FIELDS + binarize_lam.keys()		
 		#print all the fields 
 		export_features(obs, all_fields)
-		
 
 if __name__ == '__main__': main()
 				

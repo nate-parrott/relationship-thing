@@ -2,7 +2,9 @@
 (function() {
 	var fieldNames = {
 		'age_difference': 'Age difference',
-		'relationship_quality': 'Self-assessed relationship quality (0 – 4)'
+		'relationship_quality': 'Self-assessed relationship quality (0 – 4)',
+		'respondent_yrsed': "Respondent's years of education",
+		'partner_yrsed': "Partner's years of education"
 	}
 	
 	var aggregatePoints = function(points, keyFunc) {

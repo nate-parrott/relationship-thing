@@ -1,6 +1,9 @@
 import csv
 from sklearn import tree
+from sklearn.externals.six import StringIO
 import numpy as np
+import copy
+import random
 
 def createDecisionTree():
 	"""
@@ -11,10 +14,11 @@ def createDecisionTree():
 	"""
 
 	csv_reader = list(csv.DictReader(open('binary_data.csv')))
-	mydict = csv_reader[0]
+	mydict = copy.copy(csv_reader[0])
 	del mydict["caseid_new"]
 	del mydict["broken_up"]
 	features = sorted(mydict.keys())
+	print features
 	clf = tree.DecisionTreeClassifier()
 
 	observations = []
@@ -35,14 +39,14 @@ def createDecisionTree():
 		obs = []
 		# process observations
 		for feature in features:
-			if row[features] == "MISSING":
+			if row[feature] == "MISSING" or row[feature] == "":
 				rand = random.random()
 				if rand < 0.5:
 					obs.append(1)
 				else:
 					obs.append(0)
 			else:
-				obs.append(int(row[features]))
+				obs.append(int(row[feature]))
 		observations.append(obs)
 
 	clf.fit(observations, classes)
@@ -50,4 +54,6 @@ def createDecisionTree():
 	return clf
 
 if __name__ == '__main__':
-	getBestFeature()
+	classifier = createDecisionTree()
+	#with open("tree.dot", "w") as f:
+	#	f = tree.export_graphviz(classifier, out_file = f)

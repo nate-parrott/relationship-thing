@@ -6,8 +6,8 @@ parental_approval	"don't approve or don't know"	approve
 s1a	yes
 respondent_race	"NH white"	"NH black"	"NH Amer Indian"	"NH Asian Pac Islander"	"NH Other"	Hispanic
 partner_race	"NH white"	"NH black"	"NH Amer Indian"	"NH Asian Pac Islander"	"NH Other"	Hispanic
-w3_q5	yes	no
-w3_q1	yes	no
+w3_q5	no	yes
+w3_q1	no	yes
 relationship_quality	"very poor"	poor	fair	good	excellent
 w2w3_combo_breakup	"still together, or lost to follow-up, or partner deceased"	"broke up"
 w3_broke_up	"still together"	"broke up"	"partner deceased"

@@ -124,3 +124,8 @@ line.axis {
 	color: #FE4365;
 	text-transform: uppercase;
 }
+
+/* title */
+#title h1, #title h5 {
+	margin: 0;
+}

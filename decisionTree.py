@@ -10,19 +10,12 @@ import copy
 import random
 
 def createObservations():
-	"""
-	bashCommand = "wc -l out.csv"
-	process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
-	output = process.communicate()[0]
-	n = int(output.split()[0])
-	"""
-
+	# process file
 	csv_reader = list(csv.DictReader(open('binary_data.csv')))
 	mydict = copy.copy(csv_reader[0])
 	del mydict["caseid_new"]
 	del mydict["broken_up"]
 	features = sorted(mydict.keys())
-	print features
 
 	observations = []
 	classes = []
@@ -65,29 +58,57 @@ def compareClassifiers():
 	my_tree.fit(observations, classes)
 	tree_score = my_tree.score(observations, classes)
 	tree_cv = cross_validation.cross_val_score(my_tree, observations, classes, scoring='accuracy', cv=10)
-	print "tree score:", tree_score, "tree cv", np.mean(tree_cv)
+	#print "tree score:", tree_score, "tree cv", np.mean(tree_cv)
 
 	# make naive classifier
 	naive = BernoulliNB(binarize=None)
 	naive.fit(observations, classes)
 	naive_score = naive.score(observations, classes)
 	naive_cv = cross_validation.cross_val_score(naive, observations, classes, scoring='accuracy', cv=10)
-	print "naive score:", naive_score, "naive cv", np.mean(naive_cv)
+	#print "naive score:", naive_score, "naive cv", np.mean(naive_cv)
 
 	# make SVM classifier
 	svm = LinearSVC()
 	svm.fit(observations, classes)
 	svm_score = svm.score(observations, classes)
 	svm_cv = cross_validation.cross_val_score(svm, observations, classes, scoring='accuracy', cv=10)
-	print "svm score:", svm_score, "svm cv", np.mean(svm_cv)
+	#print "svm score:", svm_score, "svm cv", np.mean(svm_cv)
 
 	# make Log classifier
 	log = LogisticRegression()
 	log.fit(observations, classes)
 	log_score = log.score(observations, classes)
 	log_cv = cross_validation.cross_val_score(log, observations, classes, scoring='accuracy', cv=10)
-	print "log score:", log_score, "log cv", np.mean(log_cv)
+	#print "log score:", log_score, "log cv", np.mean(log_cv)
+
+	return [(tree_score, np.mean(tree_cv)), (naive_score, np.mean(naive_cv)), (svm_score, np.mean(svm_cv)), (log_score, np.mean(log_cv))]
 
 
 if __name__ == '__main__':
-	compareClassifiers()
+	tree_cvs = []
+	naive_cvs = []
+	svm_cvs = []
+	log_cvs = []
+	for i in range(25):
+		chain = compareClassifiers()
+		tree_cvs.append(chain[0][1])
+		naive_cvs.append(chain[1][1])
+		svm_cvs.append(chain[2][1])
+		log_cvs.append(chain[3][1])
+
+	max = np.argmax([np.mean(tree_cvs), np.mean(naive_cvs), np.mean(svm_cvs), np.mean(log_cvs)])
+	if max == 0:
+		print "tree", np.mean(tree_cvs)
+	elif max == 1:
+		print "naive", np.mean(naive_cvs)
+	elif max == 2:
+		print "svm", np.mean(svm_cvs)
+	else:
+		print "log", np.mean(log_cvs)
+
+	"""
+	print "tree", np.mean(tree_cvs)
+	print "naive", np.mean(naive_cvs)
+	print "svm", np.mean(svm_cvs)
+	print "log", np.mean(log_cvs)
+	"""

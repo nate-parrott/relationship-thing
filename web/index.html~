@@ -83,12 +83,6 @@
 			</table>
 		</div>
 	</div>
-
-	<div class="buttonQuiz">
-	  <a href="#" class="button">
-	    <span>Take the Quiz!</span>
-	  </a>
-	</div>
 	
 </body>
 </html>

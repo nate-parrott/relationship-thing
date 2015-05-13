@@ -106,9 +106,7 @@ if __name__ == '__main__':
 	else:
 		print "log", np.mean(log_cvs)
 
-	"""
 	print "tree", np.mean(tree_cvs)
 	print "naive", np.mean(naive_cvs)
 	print "svm", np.mean(svm_cvs)
 	print "log", np.mean(log_cvs)
-	"""

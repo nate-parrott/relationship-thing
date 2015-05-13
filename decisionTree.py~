@@ -89,7 +89,7 @@ if __name__ == '__main__':
 	naive_cvs = []
 	svm_cvs = []
 	log_cvs = []
-	for i in range(10):
+	for i in range(25):
 		chain = compareClassifiers()
 		tree_cvs.append(chain[0][1])
 		naive_cvs.append(chain[1][1])

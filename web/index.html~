@@ -3,12 +3,12 @@
 <head>
 	<meta charset='utf-8'/>
 	<title>How Couples Meet &amp; Stay Together</title>
-	<link rel='stylesheet' href='/static/shared.css'/>
+	<link rel='stylesheet' href='/shared.css'/>
 	<script src='http://d3js.org/d3.v3.min.js' charset='utf-8'></script>
 	<script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
-	<script src='/static/fieldNames.js'></script>
-	<script src='/static/data.js'></script>
-	<script src='/static/graph.js'></script>
+	<script src='/fieldNames.js'></script>
+	<script src='/data.js'></script>
+	<script src='/graph.js'></script>
 </head>
 <body>
 	
@@ -62,27 +62,6 @@
 			</table>
 		</div>
 	</div>
-
-		<div class='page'>
-		<div class='text-column'>
-			<h1>Does income affect relationship quality?</h1>
-			<div class='graph' data-x='hhinc' data-y='relationship_quality'></div>
-			<table class='stats'>
-				<thead>
-					<tr>
-						<td>Correlation</td>
-						<td>Significant?</td>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Positive (Pearson coefficient = 0.10466)</td>
-						<td>Yes (p = 0.00010)</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
 	
 	<div class='page'>
 		<div class='text-column'>
@@ -103,12 +82,6 @@
 				</tbody>
 			</table>
 		</div>
-	</div>
-
-	<div class="buttonQuiz">
-	  <a href="#" class="button">
-	    <span>Take the Quiz!</span>
-	  </a>
 	</div>
 	
 </body>

@@ -1,0 +1,18 @@
+RUNNING THE WEB SERVER
+
+To run our website locally, you'll need the following packages:
+
+- Flask
+- Numpy
+- Scipy
+- Scikit-learn
+
+To install them, run:
+
+$ pip install Flask numpy scipy scikit-learn
+
+To start the server, run:
+
+$ python web/website.py
+
+Visit the website in your browser at http://localhost:5000.

@@ -28,5 +28,9 @@ def main():
 	correlation, p_val = pearsonr(map(float, incomes), map(float, relationship_qualities))
 	print "Household income is correlated with self-assessed relationship quality with pearson coefficient {0} and p-value {1}".format(correlation, p_val)
 
+	approval, relationship_qualities = arrays_for_comparison(couples, 'parental_approval', 'relationship_quality')
+	correlation, p_val = pearsonr(map(float, approval), map(float, relationship_qualities))
+	print "Parental approval is correlated with self-assessed relationship quality with pearson coefficient {0} and p-value {1}".format(correlation, p_val)
+
 if __name__ == '__main__':
 	main()

@@ -198,7 +198,7 @@ def main():
 		all_fields.extend(SUPP_FIELDS)
 		#print all the fields 
 		export_features(obs, all_fields, 'cleaned_data.csv')
-		export_features_as_js(obs, all_fields, 'web/data.js')
+		export_features_as_js(obs, all_fields, 'web/static/data.js')
 		
 
 if __name__ == '__main__': main()

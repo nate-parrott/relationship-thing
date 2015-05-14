@@ -1,5 +1,6 @@
 import csv
-from scipy.stats import pearsonr
+import numpy as np
+from scipy.stats import pearsonr, ttest_ind
 
 def arrays_for_comparison(couples, key1, key2):
 	arrays = []
@@ -31,6 +32,25 @@ def main():
 	approval, relationship_qualities = arrays_for_comparison(couples, 'parental_approval', 'relationship_quality')
 	correlation, p_val = pearsonr(map(float, approval), map(float, relationship_qualities))
 	print "Parental approval is correlated with self-assessed relationship quality with pearson coefficient {0} and p-value {1}".format(correlation, p_val)
+
+	approval, married = arrays_for_comparison(couples, 'parental_approval', 'ppmarit')
+	married = np.array(map(float,married))
+	approval = np.array(map(float, approval))
+	is_married = approval[(married < 4)]
+	not_married = approval[(married > 3)]
+	t_stat, p_val = ttest_ind(is_married, not_married, equal_var = False)
+	print "The likelihood of married and not married couples having different average parental approvals has a p_value of {0}".format(p_val)
+
+
+	attractiveness, earnings = arrays_for_comparison(couples, 'w4_attractive_partner', 'q23')
+	earnings = np.array(map(float,earnings))
+	attractiveness = np.array(map(float, attractiveness))
+	more = attractiveness[(earnings == 0)]
+	less = attractiveness[(earnings == 2)]
+	t_stat, p_val = ttest_ind(more, less, equal_var = False)
+	print "The likelihood of partners who make more or less having different perceptions of the attractiveness of their partner has a p_value of {0}".format(p_val)
+
+	
 
 if __name__ == '__main__':
 	main()

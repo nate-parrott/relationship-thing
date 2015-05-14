@@ -9,17 +9,51 @@ import numpy as np
 import copy
 import random
 
+def get_features_and_data():
+	data = list(csv.DictReader(open('binary_data.csv')))
+	row1 = copy.copy(data[0])
+	del row1["caseid_new"]
+	del row1["broken_up"]
+	features = sorted(row1.keys())
+	return features, data
+
+def observation_vector_from_row_dict(row, features):
+	obs = []
+	# process observations
+	for feature in features:
+		if feature not in row or row[feature] == "MISSING" or row[feature] == "":
+			# print 'MISSING FEATURE:', feature
+			rand = random.random()
+			if rand < 0.5:
+				obs.append(1)
+			else:
+				obs.append(0)
+		else:
+			obs.append(int(row[feature]))
+	return obs
+
+def create_observations_from_dict(d):
+	features, _ = get_features_and_data()
+	return observation_vector_from_row_dict(d, features)
+
+def prob_couple_will_not_break_up(args):
+	(observations, classes) = createObservations()
+	observations = np.array(observations)
+	classes = np.array(classes)
+	# make naive classifier
+	naive = BernoulliNB(binarize=None)
+	naive.fit(observations, classes)
+	probs = naive.predict_proba([create_observations_from_dict(args)])[0]
+	prob_not_broken_up, probs_broken_up = probs
+	return prob_not_broken_up / (prob_not_broken_up + probs_broken_up)
+
 def createObservations():
 	# process file
-	csv_reader = list(csv.DictReader(open('binary_data.csv')))
-	mydict = copy.copy(csv_reader[0])
-	del mydict["caseid_new"]
-	del mydict["broken_up"]
-	features = sorted(mydict.keys())
+	features, rows = get_features_and_data()
 
 	observations = []
 	classes = []
-	for row in csv_reader:
+	for row in rows:
 		# deal with class attribution
 		if row["broken_up"] == '0':
 			classes.append(1)
@@ -32,21 +66,9 @@ def createObservations():
 		else:
 			classes.append(0)
 		
-		obs = []
-		# process observations
-		for feature in features:
-			if row[feature] == "MISSING" or row[feature] == "":
-				rand = random.random()
-				if rand < 0.5:
-					obs.append(1)
-				else:
-					obs.append(0)
-			else:
-				obs.append(int(row[feature]))
-		observations.append(obs)
+		observations.append(observation_vector_from_row_dict(row, features))
 
 	return (observations, classes)
-
 
 def compareClassifiers():
 	(observations, classes) = createObservations()

@@ -78,9 +78,12 @@ a:hover {
 	opacity: 0.5;
 }
 
-text.axis {
+text.axis { /* scatter-plot axis labels only */
 	dominant-baseline: middle;
 	text-anchor: middle;
+}
+
+.axis text, text.axis { /* all axis labels */
 	font-weight: bold;
 }
 
@@ -103,6 +106,14 @@ line.axis {
 
 .scale-label.y {
 	dominant-baseline: text-after-edge;
+}
+
+/* distribution plots */
+.graph.distribution rect {
+	fill: #FC9D9A;
+}
+.graph.distribution rect:nth-child(even) {
+	fill: #FE4365;
 }
 
 /* stats tables */

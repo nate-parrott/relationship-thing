@@ -32,7 +32,11 @@
 	    <h2><u>Dataset</u></h2>
 	       <p>Explain content of data set etc.</p>
 	    <h1><u>Methodology</u></h1>
-	       <p>Talk about methodology of collecting information we cared about...</p>
+	       <p>The HCMST dataset has over 400 variables so we had to do some work to extract the data that we were interested in. We created a python script that reads in the csv file version of the HCMST dataset and writes pulls out key features we wanted to analyze. These features include
+	       "same_sex_couple", "respondent_race", "partner_race", "age_difference" and many more.
+	       We ended up extracting about 40 different features. </p>
+	       <p>The featurizer works by taking in a number of csv files to extract from and a list of all the fields that we're interested for each file. If first pulls out all of the necessary data and puts it into a dictionary from respondent id to a dictionary of fields to their values. Then we created a file called enum_mapper.tsv where each row is a field and all of the acceptable responses. We use this file to convert the different answers into enums which correspond to the order that the answers are listed in enum_mapper.tsv. Any fields with "" as a response were labeled as "MISSING" and any fields with unacceptable answers were labeled as "OTHER". Then we filter out the data that does not contain acceptable answers for a number of fields. For example, we filter out anyone whose partner passed away during the study and any respondents that indicated that they were not in a relationship during the study. Lastly we export features both as a csv and as a json object for later use.
+	       </p>
 	    <h2><u>Correlations</u></h2>
 	       <p>Explain general idea of looking at correlations and results are below...</p>
 	  </div>
@@ -162,6 +166,16 @@
 	    <h1><u>Building a Classifier</u></h1>
 	      <p>To start building the classifier, we needed to modify the data we collected. Some of the features we wished to test weren't binary to start with. For example, "age difference" was a feature we wished to include. This started out as a range of numbers and we were able to convert it into 0 or 1 depending on the value. If the age difference between partners was less than 5 years the value became 0. If the age difference was greater than or equal to 5 years, the value became 1.</p>
 	      <p>Another issue we ran into was missing data. Some of the interviewees refused to answer certain questions, so there were plenty of "observation" with a missing feature. Instead of throwing the data out, we decided to do some research on how to best deal with the problem. We settled on assigning that a missing feature randomly to 0 or 1. Other options were computationally intensive and seemed unnecessary.<p>
+	      <p>Our class label was if the couple broke up in the third wave of the study or not. We ended up using the following features in our classifier:</p>
+	      <ul>
+	      	<li>Same sex couple or not</li>
+	      	<li>Parents approve or disapprove</li>
+	      	<li>The age difference between the two is greater or less than 5 years</li>
+	      	<li>Couple met on the internet or not</li>
+	      	<li>Partners are the same race or not</li>
+	      	<li>Partners are part of the same political party or not</li>
+	      	<li>Partners practice the same religion or not</li>
+	      </ul>
 	      <p>Finally, with a set of observations composed of features and a set of observation labels indicating if that couple was still together or not, we could start building classifiers. We decided to test four different classifiers:
 		  <ul>
 		    <li>Decision Tree</li>

@@ -17,5 +17,6 @@ q12	republican	democrat	independent	"another party, please specify"	"no preferen
 papreligion	"baptist-any denomination"	"protestant (e.g., methodist, lutheran, presbyterian, episcopal)"	catholic	mormon	jewish	muslim	hindu	buddhist	pentecostal	"eastern orthodox"	"other christian"	"other non-christian, please specify:"	none	refused
 q7b	"baptist - any denomination"	"protestant (e.g. methodist, lutheran, presbyterian, episcopal)"	catholic	mormon	jewish	muslim	hindu	buddhist	pentecostal	"eastern orthodox"	"other christian"	"other non-christian, please specify"	none	refused
 ppmarit	married	widowed	divorced	separated	"never married"	"living with partner"
-w4_attractive	"very attractive"	"moderately attractive"	"slightly attractive"	"not at all attractive"	Refused
-w4_attractive_partner	"very attractive"	"moderately attractive"	"slightly attractive"	"not at all attractive"	Refused
+w4_attractive	"very attractive"	"moderately attractive"	"slightly attractive"	"not at all attractive"
+w4_attractive_partner	"very attractive"	"moderately attractive"	"slightly attractive"	"not at all attractive"	
+ppgender	male	female

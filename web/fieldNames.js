@@ -4,5 +4,6 @@ FIELD_NAMES = {
 	'respondent_yrsed': "Respondent's years of education",
 	'partner_yrsed': "Partner's years of education",
 	'how_long_ago_first_romantic': 'Relationship duration (years)',
-	'hhinc': 'Household Income (dollars)'
+	'hhinc': 'Household Income (dollars)',
+	'parental_approval': 'Parental Approval'
 }

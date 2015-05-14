@@ -10,7 +10,7 @@ def arrays_for_comparison(couples, key1, key2):
 	return [[couple[k] for couple in couples] for k in keys]
 
 def main():
-	couples = list(csv.DictReader(open('web/out.csv')))
+	couples = list(csv.DictReader(open('cleaned_data.csv')))
 	
 	relationship_qualities, age_diffs = arrays_for_comparison(couples, 'relationship_quality', 'age_difference')
 	age_diff_correlation, age_diff_p_val = pearsonr(map(float, age_diffs), map(float, relationship_qualities))
@@ -23,6 +23,14 @@ def main():
 	years, relationship_qualities = arrays_for_comparison(couples, 'how_long_ago_first_romantic', 'relationship_quality')
 	correlation, p_val = pearsonr(map(float, years), map(float, relationship_qualities))
 	print "Duration of relationship is correlated with self-assessed relationship quality with pearson coefficient {0} and p-value {1}".format(correlation, p_val)
+
+	incomes, relationship_qualities = arrays_for_comparison(couples, 'hhinc', 'relationship_quality')
+	correlation, p_val = pearsonr(map(float, incomes), map(float, relationship_qualities))
+	print "Household income is correlated with self-assessed relationship quality with pearson coefficient {0} and p-value {1}".format(correlation, p_val)
+
+	approval, relationship_qualities = arrays_for_comparison(couples, 'parental_approval', 'relationship_quality')
+	correlation, p_val = pearsonr(map(float, approval), map(float, relationship_qualities))
+	print "Parental approval is correlated with self-assessed relationship quality with pearson coefficient {0} and p-value {1}".format(correlation, p_val)
 
 if __name__ == '__main__':
 	main()

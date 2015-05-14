@@ -119,6 +119,9 @@ line.axis {
 .graph.distribution rect:nth-child(even) {
 	fill: #FE4365;
 }
+.graph.distribution path {
+	mix-blend-mode: multiply;
+}
 .color-legend > div {
 	display: inline-block;
 	padding: 3px 9px;

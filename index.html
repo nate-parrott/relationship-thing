@@ -29,7 +29,7 @@
 	  <div class='text-column'>
 	    <h1><u>Introduction</u></h1>
 	       <h3>"The heart wants what it wants. There's no logic to these things. You meet someone and you fall in love and that's that." -Woody Allen</h3>
-	       <p>People are fascinated and gripped by love everyday. Woody Allen claims its a mysterious thing that just happens. We wanted to see if we could break down "love" to show that it doesn't escape all rationale. Maybe there are patterns and who you are determines who you fall in love with. We propose that relationships that are measurably more “successful” (as determined by self-assessment by the respondents, as well as relationship duration and civil union or marriage) will be between people who share significant demographic similarities, including religion, educational attainment, age and race. In general, though, we're just curious to see what patterns arise! Of course, we need some data to start quanitfying love.</p>
+	       <p>People are fascinated and gripped by love everyday. Woody Allen claims it's a mysterious thing that just happens. We wanted to see if we could break down "love" to show that it doesn't escape all rationale. Maybe there are patterns and who you are determines who you fall in love with. We propose that relationships that are measurably more “successful” (as determined by self-assessment by the respondents, as well as relationship duration and civil union or marriage) will be between people who share significant demographic similarities, including religion, educational attainment, age and race. In general, though, we're just curious to see what patterns arise! Of course, we need some data to start quanitfying love.</p>
 	    <h2>Dataset</h2>
 	       <p>Our data set is 2009-2011 Stanford study by Michael J Rosenfeld, “<a href="http://data.stanford.edu/hcmst">How Couples Meet and Stay Together</a>,” which surveyed around 4000 people about various aspects of their relationships (or lack of such).</p>
 	       <p>For each respondent, the survey asked a number of demographic and relationship-related questions, including race, religion, income, location, age and sexual orientation of the respondent and their partner, the length of their relationship, how they met, their self-assessed relationship quality, and self-assessed attractiveness of the respondent and their partner.</p>
@@ -137,7 +137,29 @@
 					</tr>
 				</tbody>
 			</table>
-			<p>EXPLANATION of results...</p>
+			<p>It appears that having your parents' approval is crucial to a happy relationship. Interviewees could either indicate that at least one parent approved or neither did. Correlating this with relationship quality revealed a mildly positive correlation of 0.38. The statistical significance of this is very high as you can see from the p-value. So who needs a crystal ball when you can just ask your parents about your new love? ;)</p>
+		</div>
+	</div>
+
+	<div class='page'>
+		<div class='text-column'>
+			<h1>Does meeting on the internet impact relationship quality?</h1>
+			<div class='graph distribution' data-x='relationship_quality' data-segment='q32_internet' data-buckets='4'></div>
+			<table class='stats'>
+				<thead>
+					<tr>
+						<td>Correlation</td>
+						<td>T-test Significance?</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Positive (Pearson coefficient = -0.01062)</td>
+						<td>Nope (p = 0.75693)</td>
+					</tr>
+				</tbody>
+			</table>
+			<p>This is great news for the modern couple that meets on the internet! When comparing the relationship quality between couples that met on the internet and ones that didn't, we found no statistical difference. Couples that met on the internet even had a slightly higher average rating of 3.35 whereas those that didn't had an average of 3.33. (3 means good and 4 means excellent.) Again, though, the p-value is extremely high suggesting that the two distributions are very similar. Above, "0" means did meet through internet and "1" means didn't. Some of the answers were blank and we thought it would be interesting to see their distribution as well. It appears that it makes no difference at all how you meet your bae.</p>
 		</div>
 	</div>
 	
@@ -159,7 +181,7 @@
 					</tr>
 				</tbody>
 			</table>
-			<p>EXPLANATION of results...</p>
+			<p>Recall earlier that we showed that most couples rate the quality of their relationship highly. With this in mind, we decided to simply look at one of the traits of couples. So are you likely to end up with someone with the same level of education? In terms of years of education, the answer is absolutely yes! There is a mild positive correlation of 0.41 but an extremely significant p-value of 0.0001.</p>
 		</div>
 	</div>
 
@@ -170,6 +192,7 @@
 					<ul>
 						<li><i>Does parental approval differ between married and non-married couples?</i> <p>It turns out the answer is no. Married couples had parental approval about 65% of the time and non-married couples had parental approval about 63% of the time. After running a t-test on the distributions, we found that the p-value was very high and thus insignificant.</p></li>
 						<li><i>Is attractivness affected by how much your partner makes?</i> <p>Essentially the question asks is if your partner makes more, are you more likely to find them very attractive? Or maybe it negatively affects perceived attractiveness. However, the p-value was roughly 0.3 and did not show any significant difference.</p></li>
+						<li><i>Do partners with the same political affiliation tend to be happier?</i> <p>Participants were asked to name their political affiliation and could answer as "Democrat", "Republican", or "Other". Then we found where these answers matched to run a t-test comparing relationship quality. The test revealed that there is a very significance difference, with a p-value of 3.7e-8. On average, couples that had the same political affiliations rated their relationship quality 0.1 points higher (out of 4). It's also interesting to note that both groups of couples had about 1000 data points. Thus, having the same political affiliation is very likely to make your relationship a bit happier!</p></li>
 					</ul>
 				</p>
 		</div>

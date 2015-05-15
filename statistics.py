@@ -33,24 +33,48 @@ def main():
 	correlation, p_val = pearsonr(map(float, approval), map(float, relationship_qualities))
 	print "Parental approval is correlated with self-assessed relationship quality with pearson coefficient {0} and p-value {1}".format(correlation, p_val)
 
-	approval, married = arrays_for_comparison(couples, 'parental_approval', 'ppmarit')
-	married = np.array(map(float,married))
-	approval = np.array(map(float, approval))
-	is_married = approval[(married < 4)]
-	not_married = approval[(married > 3)]
-	t_stat, p_val = ttest_ind(is_married, not_married, equal_var = False)
-	print "averages: married {0} and non-married {1}".format(np.mean(is_married), np.mean(not_married))
-	print "The likelihood of married and not married couples having different average parental approvals has a p_value of {0}".format(p_val)
+	# q32, relationship_qualities = arrays_for_comparison(couples, 'q32_internet', 'relationship_quality')
+	# q32 = np.array(map(float, q32))
+	# relationship_qualities = np.array(map(float, relationship_qualities))
+	# yes_internet = relationship_qualities[q32 == 0]
+	# no_internet = relationship_qualities[q32 == 1]
+	# t_stat, p_val = ttest_ind(yes_internet, no_internet, equal_var=False)
+	# print "averages: internet {0} and not {1}".format(np.mean(yes_internet), np.mean(no_internet))
+	# print "The likelihood of couples met on the internet and not having different relationship qualities has a p_value of {0}".format(p_val)
+	# correlation, p_val = pearsonr(q32, relationship_qualities)
+	# print "Internet meeting is correlated with self-assessed relationship quality with pearson coefficient {0} and p-value {1}".format(correlation, p_val)
 
-	attractiveness, earnings = arrays_for_comparison(couples, 'w4_attractive_partner', 'q23')
-	earnings = np.array(map(float,earnings))
-	attractiveness = np.array(map(float, attractiveness))
-	print attractiveness
-	more = attractiveness[(earnings == 0)]
-	less = attractiveness[(earnings == 2)]
-	t_stat, p_val = ttest_ind(more, less, equal_var = False)
-	print "averages: partner earns less {0} and partner earns more {1}".format(np.mean(more), np.mean(less))
-	print "The likelihood of partners who make more or less having different perceptions of the attractiveness of their partner has a p_value of {0}".format(p_val)
+	political1, relationship_qualities = arrays_for_comparison(couples, 'pppartyid3', 'relationship_quality')
+	political2, relationship_qualities = arrays_for_comparison(couples, 'q12', 'relationship_quality')
+	political1 = np.array(map(float, political1))
+	political2 = np.array(map(float, political2))
+	relationship_qualities = np.array(map(float, relationship_qualities))
+	same = (political1 == political2)
+	not_same = (political1 != political2)
+	t_stat, p_val = ttest_ind(same, not_same, equal_var = False)
+	print "averages: same {0} and not{1}".format(np.mean(same), np.mean(not_same))
+	print len(same), len(not_same)
+	print "The likelihood of same and not same (politically) couples having different average relationship qualities has a p_value of {0}".format(p_val)
+
+
+	# approval, married = arrays_for_comparison(couples, 'parental_approval', 'ppmarit')
+	# married = np.array(map(float,married))
+	# approval = np.array(map(float, approval))
+	# is_married = approval[(married < 4)]
+	# not_married = approval[(married > 3)]
+	# t_stat, p_val = ttest_ind(is_married, not_married, equal_var = False)
+	# print "averages: married {0} and non-married {1}".format(np.mean(is_married), np.mean(not_married))
+	# print "The likelihood of married and not married couples having different average parental approvals has a p_value of {0}".format(p_val)
+
+	# attractiveness, earnings = arrays_for_comparison(couples, 'w4_attractive_partner', 'q23')
+	# earnings = np.array(map(float,earnings))
+	# attractiveness = np.array(map(float, attractiveness))
+	# print attractiveness
+	# more = attractiveness[(earnings == 0)]
+	# less = attractiveness[(earnings == 2)]
+	# t_stat, p_val = ttest_ind(more, less, equal_var = False)
+	# print "averages: partner earns less {0} and partner earns more {1}".format(np.mean(more), np.mean(less))
+	# print "The likelihood of partners who make more or less having different perceptions of the attractiveness of their partner has a p_value of {0}".format(p_val)
 
 	
 

@@ -34,7 +34,9 @@ code:
 	- cleaned_data
 html:
 	- classifiers.py:
-		~this is simply a copy so that website.py can import it easily
+		~this is simply a copy so that "website.py" can import it easily
+	- binary_data.csv:
+		~this is also a copy so that "quiz.html" runs properly
 	- website.py:
 		~uses flask to run our website
 	- index.html
@@ -44,4 +46,9 @@ html:
 	- result.hmtl
 		~appears after users complete the page on "quiz.html"
 data:
-	- 
+	- projectdata.csv:
+		~ the original data provided by Stanford after converting it into csv
+	- supplement.csv:
+		~ supplemental information provided separately by Stanford
+poster:
+	This folder contains miscellaneous files used for the poster session.

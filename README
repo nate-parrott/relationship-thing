@@ -16,3 +16,32 @@ To start the server, run:
 $ python website.py
 
 Visit the website in your browser at http://localhost:5000.
+
+FILES SUMMARY
+code:
+	- featurizer.py:
+		~this script gathers the data we care about from "projectdata.csv" and "supplement.csv" into one final csv joined on the id into "cleaned_data.csv"
+		~this script also takes some of this data and converts it into binary data for the classifier into "binary_data.csv"
+	- statistics.py:
+		~here we tested some correlations, used scikit to calculate pearson's correlation and significance, as well as some t-tests
+		~we use the outputs in our report
+	- statisticstwo.py:
+		~this script runs a few more t-tests to talk about in the report
+	- classifiers.py:
+		~builds four different classifiers and compares them
+	- binary_data.csv:
+		~output of featurizer.py
+	- cleaned_data
+html:
+	- classifiers.py:
+		~this is simply a copy so that website.py can import it easily
+	- website.py:
+		~uses flask to run our website
+	- index.html
+		~provides most of the written content for our website
+	- quiz.html
+		~provides the text for the form people can fill out on this page
+	- result.hmtl
+		~appears after users complete the page on "quiz.html"
+data:
+	- 

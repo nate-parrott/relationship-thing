@@ -17,10 +17,28 @@ FIELD_VALUE_NAMES = {
 	},
 	'parental_approval': {
 		0: 'Neither parent approves',
-		1: 'At least one parent approves'
+		1: 'At least one parent approves',
 	},
 	'q32_internet': {
 		0: 'Met on the Internet',
 		1: 'Did not meet on Internet'
+	},
+	'same_race': {
+		0: 'Different Race',
+		1: 'Same Race',
+	},
+	'same_religion': {
+		0: 'Same Religion',
+		1: 'Different Religion',
+	},
+	'pppartyid3': {
+		0: 'republican',
+		1: 'democrat',
+		2: 'other'
+	},
+	'q23': {
+		0: 'respondent made more',
+		1: 'partners made equal amounts',
+		2: 'partner made more',
 	}
 }

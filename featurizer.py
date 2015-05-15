@@ -79,13 +79,24 @@ def clean(observations, enum_map):
                         if not converted:
                                 obs[field] = OTHER 
         return observations
+def add_sim_data(observations, field1, field2, sim_name):
+    for obs_key in observations.keys():
+        obs = observations[obs_key]
+        if obs[field1] != MISSING and obs[field2] != MISSING:
+        	if obs[field1] != OTHER and obs[field2] != OTHER:
+       			obs[sim_name] = 1 if int(obs[field1]) == int(obs[field2]) else 0
+       		else:
+       			obs[sim_name] = MISSING
+       	else:
+       		obs[sim_name] = MISSING
+    return observations
 
 def add_diff_data(observations, field1, field2, diff_name):
     for obs_key in observations.keys():
         obs = observations[obs_key]
         if obs[field1] != MISSING and obs[field2] != MISSING:
         	if obs[field1] != OTHER and obs[field2] != OTHER:
-       			obs[diff_name] = float(obs[field1]) - float(obs[field2])
+       			obs[diff_name] = abs(float(obs[field1]) - float(obs[field2]))
        		else:
        			obs[diff_name] = MISSING
        	else:
@@ -203,12 +214,18 @@ def main():
                                          'broken_up' : lambda x: x['w3_broke_up']
                                          }
         obs = add_diff_data(obs, 'w4_attractive', 'w4_attractive_partner', 'attractive_diff')
+        obs = add_sim_data(obs, 'respondent_race', 'partner_race', 'same_race')
+        obs = add_sim_data(obs, 'pppartyid3', 'q12', 'same_pol')
+        obs = add_sim_data(obs, 'papreligion', 'q7b', 'same_religion')
         #converts the data to the binarized form
         bin_obs = binarize_data(obs, binarize_lam, 'caseid_new')
         #export the binary features
         export_features(bin_obs, BINARY_FIELDS, 'binary_data.csv')
         all_fields = list(INFO_FIELDS)
         all_fields.append('attractive_diff')
+        all_fields.append('same_race')
+        all_fields.append('same_religion')
+        all_fields.append('same_pol')
         all_fields.extend(SUPP_FIELDS)
         #print all the fields 
         export_features(obs, all_fields, 'cleaned_data.csv')

@@ -6,6 +6,7 @@ FIELD_NAMES = {
 	'how_long_ago_first_romantic': 'Relationship duration (years)',
 	'hhinc': 'Household Income (dollars)',
 	'parental_approval': 'Parental approval'
+	'q32_internet': 'Met through Internet?'
 }
 
 FIELD_VALUE_NAMES = {
@@ -16,5 +17,9 @@ FIELD_VALUE_NAMES = {
 	'parental_approval': {
 		0: 'Neither parent approves',
 		1: 'At least one parent approves'
+	}
+	'q32_internet': {
+		0: 'Met on the Internet',
+		1: 'Did not meet on Internet'
 	}
 }

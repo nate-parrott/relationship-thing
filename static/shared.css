@@ -98,6 +98,9 @@ line.axis {
 .text-column h1 {
 	text-align: center;
 }
+.text-column h2 {
+	text-align: center;
+}
 
 .scale-label {
 	font-size: x-small;

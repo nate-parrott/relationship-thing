@@ -28,17 +28,19 @@
 	<div class='page'>
 	  <div class='text-column'>
 	    <h1><u>Introduction</u></h1>
-	       <p>Talk about motivations etc.</p>
-	    <h2><u>Dataset</u></h2>
-	       <p>Explain content of data set etc.</p>
+	       <h3>"The heart wants what it wants. There's no logic to these things. You meet someone and you fall in love and that's that." -Woody Allen</h3>
+	       <p>People are fascinated and gripped by love everyday. Woody Allen claims its a mysterious thing that just happens. We wanted to see if we could break down "love" to show that it doesn't escape all rationale. Maybe there are patterns and who you are determines who you fall in love with. We propose that relationships that are measurably more “successful” (as determined by self-assessment by the respondents, as well as relationship duration and civil union or marriage) will be between people who share significant demographic similarities, including religion, educational attainment, age and race. In general, though, we're just curious to see what patterns arise! Of course, we need some data to start quanitfying love.</p>
+	    <h2>Dataset</h2>
+	       <p>Our data set is 2009-2011 Stanford study by Michael J Rosenfeld, “<a href="http://data.stanford.edu/hcmst">How Couples Meet and Stay Together</a>,” which surveyed around 4000 people about various aspects of their relationships (or lack of such).</p>
+	       <p>For each respondent, the survey asked a number of demographic and relationship-related questions, including race, religion, income, location, age and sexual orientation of the respondent and their partner, the length of their relationship, how they met, their self-assessed relationship quality, and self-assessed attractiveness of the respondent and their partner.</p>
 	    <h1><u>Methodology</u></h1>
 	       <p>The HCMST dataset has over 400 variables so we had to do some work to extract the data that we were interested in. We created a python script that reads in the csv file version of the HCMST dataset and writes pulls out key features we wanted to analyze. These features include
 	       "same_sex_couple", "respondent_race", "partner_race", "age_difference" and many more.
 	       We ended up extracting about 40 different features. </p>
 	       <p>The featurizer works by taking in a number of csv files to extract from and a list of all the fields that we're interested for each file. If first pulls out all of the necessary data and puts it into a dictionary from respondent id to a dictionary of fields to their values. Then we created a file called enum_mapper.tsv where each row is a field and all of the acceptable responses. We use this file to convert the different answers into enums which correspond to the order that the answers are listed in enum_mapper.tsv. Any fields with "" as a response were labeled as "MISSING" and any fields with unacceptable answers were labeled as "OTHER". Then we filter out the data that does not contain acceptable answers for a number of fields. For example, we filter out anyone whose partner passed away during the study and any respondents that indicated that they were not in a relationship during the study. Lastly we export features both as a csv and as a json object for later use.
 	       </p>
-	    <h2><u>Correlations</u></h2>
-	       <p>Explain general idea of looking at correlations and results are below...</p>
+	    <h2>Correlations</h2>
+	       <p>Using the new data set created by our featurizer, we are able to test a few correlations and hypotheses. Below are visuals of some of the more significant findings.</p>
 	  </div>
 	</div>
 	
@@ -162,6 +164,18 @@
 	</div>
 
 	<div class='page'>
+		<div class='text-column'>
+			<h1><u>Other Findings</u></h1>
+				<p>Along with some of our significant findings above, we tested a number of other traits to find patterns.
+					<ul>
+						<li><i>Does parental approval differ between married and non-married couples?</i> <p>It turns out the answer is no. Married couples had parental approval about 65% of the time and non-married couples had parental approval about 63% of the time. After running a t-test on the distributions, we found that the p-value was very high and thus insignificant.</p></li>
+						<li><i>Is attractivness affected by how much your partner makes?</i> <p>Essentially the question asks is if your partner makes more, are you more likely to find them very attractive? Or maybe it negatively affects perceived attractiveness. However, the p-value was roughly 0.3 and did not show any significant difference.</p></li>
+					</ul>
+				</p>
+		</div>
+	</div>
+
+	<div class='page'>
 	  <div class='text-column'>
 	    <h1><u>Building a Classifier</u></h1>
 	      <p>To start building the classifier, we needed to modify the data we collected. Some of the features we wished to test weren't binary to start with. For example, "age difference" was a feature we wished to include. This started out as a range of numbers and we were able to convert it into 0 or 1 depending on the value. If the age difference between partners was less than 5 years the value became 0. If the age difference was greater than or equal to 5 years, the value became 1.</p>
@@ -191,7 +205,7 @@
 		    <li>Support Vector Machine: 0.697729433245</li>
 		    <li>Logistic Regression: 0.697648221379</li>
 		  </ul>
-We ran this test roughly 10 more times just to ensure consistency and found that Naive Bayes was consistenly slightly better than the rest of the classifiers, at least according to cross validation statistic.
+		  We ran this test roughly 10 more times just to ensure consistency and found that Naive Bayes was consistenly slightly better than the rest of the classifiers, at least according to the cross validation statistic.
 	      </p>
 	      <p>Finally, we returned a Naive Bayes classifier and built a web engine on top of it to create the quiz below!</p>
 	  </div>
@@ -202,7 +216,7 @@ We ran this test roughly 10 more times just to ensure consistency and found that
 		<div class='vertically-centered-inner'>
 			<div class='text-column'>
 				<h1>Take the Quiz</h1>
-				<p>Let's explain a bit about the methodology behind our classifier and how <em>you too</em> can classify your relationship and determine your chances of breaking up. </p>
+				<p>Above we explain a bit about the methodology behind our classifier and how <em>you too</em> can classify your relationship and determine your chances of breaking up. </p>
 				<p><br/><a href='/quiz' class='button' id='take-quiz'>Take the quiz</a></p>
 			</div>
 		</div>
@@ -216,7 +230,6 @@ We ran this test roughly 10 more times just to ensure consistency and found that
             Looking back at our project proposal, we managed to accomplish most of the goals that we set out to accomplish. We explored the interesting relationships between data that we had set out to do. We managed to develop a good understanding of what factors are correlated with relationship success and which ones aren’t. We were also able to find out what factors are likely to make a relationship last longer. We weren’t as successful with analyzing results across different types of relationships. We looked at results across same-sex/heterosexual and married/unmarried relationships, but results were not significant. This could either be because of our dataset not being sufficient for these purposes or because there is actually no correlation, but this would require further investigation. We did manage to accomplish all we had set out as a goal for 125% of our targets. 
 			</p>
 		<h2>Improvements</h2>
-
            <p>We can improve our classifier by incorporating additional data into it. We currently use variables that we were able to convert into a binary format. This allowed us to construct a basic classifier. However, we can refine this further by adding more data into it. This would involve finding a way to put more data into a numerical format. Since some of the questions are not yes or no, we would need to develop categories that map certain answers to questions to numbers in a more sophisticated way. We would also need to split up certain questions into a series of yes or no questions so that they data could be made binary in order to develop a more effective classifier. 
            </p>
 	    <h2>Future Work</h2>

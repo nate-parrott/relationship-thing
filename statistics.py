@@ -39,15 +39,17 @@ def main():
 	is_married = approval[(married < 4)]
 	not_married = approval[(married > 3)]
 	t_stat, p_val = ttest_ind(is_married, not_married, equal_var = False)
+	print "averages: married {0} and non-married {1}".format(np.mean(is_married), np.mean(not_married))
 	print "The likelihood of married and not married couples having different average parental approvals has a p_value of {0}".format(p_val)
-
 
 	attractiveness, earnings = arrays_for_comparison(couples, 'w4_attractive_partner', 'q23')
 	earnings = np.array(map(float,earnings))
 	attractiveness = np.array(map(float, attractiveness))
+	print attractiveness
 	more = attractiveness[(earnings == 0)]
 	less = attractiveness[(earnings == 2)]
 	t_stat, p_val = ttest_ind(more, less, equal_var = False)
+	print "averages: partner earns less {0} and partner earns more {1}".format(np.mean(more), np.mean(less))
 	print "The likelihood of partners who make more or less having different perceptions of the attractiveness of their partner has a p_value of {0}".format(p_val)
 
 	

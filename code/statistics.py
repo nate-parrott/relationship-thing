@@ -37,11 +37,17 @@ def main():
 	correlation, p_val = pearsonr(map(float, attractive_diff), map(float, relationship_qualities))
 	print "difference in partner attractiveness is correlated with self-assessed relqtionship quality with pearson coefficient {0} and p-value {1}".format(correlation, p_val)
 
-	parental_approval, age_diff = arrays_for_comparison(couples, 'same_race',  'relationship_quality')
-	correlation, p_val = pearsonr(map(float, parental_approval), map(float, age_diff))
-	print "religion correlated with self-assessed parental approval with pearson coefficient {0} and p-value {1}".format(correlation, p_val)
+	# parental_approval, age_diff = arrays_for_comparison(couples, 'same_race',  'relationship_quality')
+	# correlation, p_val = pearsonr(map(float, parental_approval), map(float, age_diff))
+	# print "religion correlated with self-assessed parental approval with pearson coefficient {0} and p-value {1}".format(correlation, p_val)
 
-
+	together, married = arrays_for_comparison(couples, 'w3_q5',  'w3_q5')
+	together = np.array(map(float,together))
+	married = np.array(map(float,married))
+	a = len(together[together==1])
+	b = len(together[together==0])
+	print a, b
+	print (a/float(len(together))*100)
 
 	# q32, relationship_qualities = arrays_for_comparison(couples, 'q32_internet', 'relationship_quality')
 	# q32 = np.array(map(float, q32))

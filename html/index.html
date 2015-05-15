@@ -50,7 +50,11 @@
 			<h3>On a scale of 1-4, where 4 is the most positive.</h3>
 			<div class='graph distribution' data-x='relationship_quality' data-buckets='4'></div>
 		</div>
-			<p>EXPLANATION of results...and why we want to display this data...important to understand that most of data is positive...</p>
+	</div>
+	<div class='page'>
+		<div class='text-column'>
+		<p>Before delving into the relationship quality correlations, we thought it was important to display the distribution of answers. As expected, most couples viewed their relationships in a very positive light. This skewed most of the distribution to the right where 4 means "excellent". This skew sometimes made it hard to distinguish which type of couples were truly happiest. Nonetheless, we were still able to come up with a few interesting correlations.</p>
+		</div>
 	</div>
 	
 	<div class='page'>
@@ -169,7 +173,7 @@
 					</tr>
 				</tbody>
 			</table>
-			<p>This is great news for the modern couple that meets on the internet! When comparing the relationship quality between couples that met on the internet and ones that didn't, we found no statistical difference. Couples that met on the internet even had a slightly higher average rating of 3.35 whereas those that didn't had an average of 3.33. (3 means good and 4 means excellent.) Again, though, the p-value is extremely high suggesting that the two distributions are very similar. Above, "0" means did meet through internet and "1" means didn't. Some of the answers were blank and we thought it would be interesting to see their distribution as well. It appears that it makes no difference at all how you meet your bae.</p>
+			<p>This is great news for the modern couple that meets on the internet! When comparing the relationship quality between couples that met on the internet and ones that didn't, we found no statistical difference. Couples that met on the internet even had a slightly higher average rating of 3.35 whereas those that didn't had an average of 3.33. (3 means good and 4 means excellent.) Again, though, the p-value is extremely high suggesting that the two distributions are very similar. When asked how the couples met, interviewees could answer as "0" or "1". "0" means did meet through internet and "1" means didn't. Some of the answers were blank and we thought it would be interesting to see their distribution as well. It appears that it makes no difference at all how you meet your bae.</p>
 		</div>
 	</div>
 	
@@ -241,7 +245,7 @@
 		    <li>Support Vector Machine: 0.697729433245</li>
 		    <li>Logistic Regression: 0.697648221379</li>
 		  </ul>
-		  We ran this test roughly 10 more times just to ensure consistency and found that Naive Bayes was consistenly slightly better than the rest of the classifiers, at least according to the cross validation statistic.
+		  We ran this test roughly 10 more times just to ensure consistency and found that Naive Bayes was consistenly slightly better than the rest of the classifiers, at least according to the cross validation statistic. It's interesting to note that about 80% of couples remained togther after two years. Although some of the participants did not answer, randomization gave an average around 80%.
 	      </p>
 	      <p>Finally, we returned a Naive Bayes classifier and built a web engine on top of it to create the quiz below!</p>
 	  </div>

@@ -13,7 +13,7 @@ $ pip install Flask numpy scipy scikit-learn
 
 To start the server, run:
 
-$ python website.py
+$ python html/website.py
 
 Visit the website in your browser at http://localhost:5000.
 
